@@ -8,7 +8,7 @@ export default Component.extend({
   position: 'up',
   length: false,
   title: '',
-  visible: true,
+  visible: false,
 
   attributeBindings: [
     'title:data-balloon',
