@@ -1,0 +1,28 @@
+<h1 id="title">
+  Welcome to Ember Balloon Tooltip
+</h1>
+
+
+<h1> Usage </h1>
+
+{{#balloon-tooltip title="Hello, World!!" tagName="button"}}
+  Button
+{{/balloon-tooltip}}
+
+<h3> Programatic Control </h3>
+
+{{#balloon-tooltip title="Hello, World!!" visible=true tagName="button" as |tooltip|}}
+  Click Me!
+{{/balloon-tooltip}}
+
+<h3> Positioning </h3>
+
+{{#balloon-tooltip title="Hello, World!!" tagName="button" position="down" as |tooltip|}}
+  Click Me!
+{{/balloon-tooltip}}
+
+<h3> Length </h3>
+
+{{#balloon-tooltip title="Hello, World!!" tagName="button" length="fit" as |tooltip|}}
+  Click Me!
+{{/balloon-tooltip}}
