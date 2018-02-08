@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/willrax/ember-balloon-tooltip.svg?style=svg)](https://circleci.com/gh/willrax/ember-balloon-tooltip)
+
 # Ember Balloon Tooltip
 
 An Ember addon that uses [balloon.css](http://kazzkiq.github.io/balloon.css/) to enable css driven tooltips within your application.
