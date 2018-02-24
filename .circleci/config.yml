@@ -12,15 +12,15 @@ references:
   restore_repo: &restore_repo
     restore_cache:
       keys:
-        - v1-repo-{{ .Branch }}-{{ .Revision }}
-        - v1-repo-{{ .Branch }}
-        - v1-repo
+        - v2-repo-{{ .Branch }}-{{ .Revision }}
+        - v2-repo-{{ .Branch }}
+        - v2-repo
 
   restore_node_modules: &restore_node_modules
     restore_cache:
       keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies
+        - v2-dependencies-{{ checksum "package.json" }}
+        - v2-dependencies
 
 jobs:
   checkout_code:
@@ -29,7 +29,7 @@ jobs:
       - *restore_repo
       - checkout
       - save_cache:
-          key: v1-repo-{{ .Branch }}-{{ .Revision }}
+          key: v2-repo-{{ .Branch }}-{{ .Revision }}
           paths:
             - .
 
@@ -40,7 +40,7 @@ jobs:
       - *restore_node_modules
       - run: yarn install
       - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
 
@@ -49,14 +49,14 @@ jobs:
     steps:
       - *restore_repo
       - *restore_node_modules
-      - run: node_modules/.bin/ember try:one ember-lts-2.12 --skip-cleanup
+      - run: node_modules/.bin/ember try:one ember-lts-2.16 --skip-cleanup
 
   test-lts-2.16:
     <<: *container_config
     steps:
       - *restore_repo
       - *restore_node_modules
-      - run: node_modules/.bin/ember try:one ember-lts-2.16 --skip-cleanup
+      - run: node_modules/.bin/ember try:one ember-lts-2.18 --skip-cleanup
 
   test-release:
     <<: *container_config
